@@ -1,0 +1,29 @@
+defscrollback 20000
+term xterm-256color
+termcapinfo xterm* ti@:te@
+nethack on
+altscreen on
+hardstatus alwayslastline
+hardstatus string '%{gk} %H [%{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= w}%?%+Lw%?%? %{g} ] %{W}'
+screen -t $ 0
+screen -t $ 1 ./auto-connect.sh r1
+screen -t $ 2 ./auto-connect.sh r2
+screen -t $ 3 ./auto-connect.sh r3
+screen -t $ 4 ./auto-connect.sh r4
+screen -t $ 5 ./auto-connect.sh r5
+screen -t $ 6 ./auto-connect.sh r6
+screen -t $ 7 ./auto-connect.sh r7
+screen -t $ 8 ./auto-connect.sh r8
+screen -t $ 9 ./auto-connect.sh r9
+screen -t $ 10 ./auto-connect.sh r10
+screen -t $ 11 ./auto-connect.sh r11
+screen -t $ 12 ./auto-connect.sh r12
+screen -t $ 13 ./auto-connect.sh r13
+screen -t $ 14 ./auto-connect.sh r14
+screen -t $ 15 ./auto-connect.sh r15
+screen -t $ 16 ./auto-connect.sh r16
+screen -t $ 17 ./auto-connect.sh r17
+screen -t $ 18 ./auto-connect.sh r18
+screen -t $ 19 ./auto-connect.sh r19
+screen -t $ 20 ./auto-connect.sh r20
+select 0
