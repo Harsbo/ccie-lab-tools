@@ -26,7 +26,7 @@ r20 = {'ip': '10.0.0.120', 'username': 'cisco', 'password': 'cisco', 'device_typ
 
 devices = [r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19, r20]
 
-print 'SSH test (30 sec) \n'
+print 'SSH test (execution time approx 30 sec) \n'
 for device in devices:
     try:
         net_connect = ConnectHandler(**device)

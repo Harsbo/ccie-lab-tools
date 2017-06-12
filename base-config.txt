@@ -1,3 +1,5 @@
+#Note the absence of hostname, it is provided by DHCP option 12
+!
 vrf definition Mgmt
  address-family ipv4
 ! 
@@ -17,7 +19,12 @@ ipv6 unicast-routing
 ! 
 interface GigabitEthernet1
  no shut 
-! 
+!
+interface GigabitEthernet2
+ no shut
+ vrf forwarding Mgmt
+ ip address dhcp
+!
 service tcp-keepalives-out 
 service tcp-keepalives-in 
 ! 
@@ -35,12 +42,6 @@ ip http client source-interface GigabitEthernet2
 virtual-service csr_mgmt
  ip shared host-interface GigabitEthernet2
  activate 
-! 
-! 
-interface GigabitEthernet2
- no shut
- vrf forwarding Mgmt
- ip address dhcp 
 ! 
 ! 
 crypto key generate rsa mod 2048 
