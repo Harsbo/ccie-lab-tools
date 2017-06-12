@@ -1,4 +1,5 @@
-#Note the absence of hostname, it is provided by DHCP option 12
+!
+#Note the absence of hostname, I used DHCP option 12 to provide that
 !
 vrf definition Mgmt
  address-family ipv4
@@ -8,6 +9,7 @@ username cisco privilege 15 secret cisco
 ip domain name hackernet.se 
 clock timezone CET 1 0 
 clock summer-time CEST recurring last Sun Mar 2:00 last Sun Oct 3:00 
+!
 ip ssh version 2 
 ip ssh pubkey-chain
   username cisco
@@ -25,6 +27,7 @@ interface GigabitEthernet2
  vrf forwarding Mgmt
  ip address dhcp
 !
+ip http client source-interface GigabitEthernet2
 service tcp-keepalives-out 
 service tcp-keepalives-in 
 ! 
@@ -36,9 +39,7 @@ line vty 0 4
  logging synchronous
  login local
  transport input ssh 
-! 
-ip http client source-interface GigabitEthernet2 
-! 
+!
 virtual-service csr_mgmt
  ip shared host-interface GigabitEthernet2
  activate 
