@@ -1,0 +1,15 @@
+---
+- hosts: all_routers
+  name: R1-R20
+  connection: local
+
+  vars:
+    cli:
+      username: "cisco"
+      transport: cli
+
+  tasks:
+    - name: Saving config
+      ios_config:
+        save: yes
+        provider: "{{ cli }}"

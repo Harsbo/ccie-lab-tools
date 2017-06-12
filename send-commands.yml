@@ -1,0 +1,18 @@
+---
+- hosts: all_routers
+  name: R1-R20
+  connection: local
+
+  vars:
+    cli:
+      username: "cisco"
+      transport: cli
+
+  tasks:
+    - name: Sending commands
+      ios_config:
+        lines:
+          - logging on
+          - logging console
+          - logging monitor
+        provider: "{{ cli }}"

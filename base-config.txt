@@ -1,0 +1,49 @@
+vrf definition Mgmt
+ address-family ipv4
+! 
+enable secret cisco 
+username cisco privilege 15 secret cisco 
+ip domain name hackernet.se 
+clock timezone CET 1 0 
+clock summer-time CEST recurring last Sun Mar 2:00 last Sun Oct 3:00 
+ip ssh version 2 
+ip ssh pubkey-chain
+  username cisco
+   key-hash ssh-rsa 0CE2F54E3D07EEDA131B61092611D0C7
+! 
+no aaa new-model 
+no ip domain lookup 
+ipv6 unicast-routing 
+! 
+interface GigabitEthernet1
+ no shut 
+! 
+service tcp-keepalives-out 
+service tcp-keepalives-in 
+! 
+line con 0
+ logging synchronous
+ exec-timeout 0 
+line vty 0 4
+ exec-timeout 0 0
+ logging synchronous
+ login local
+ transport input ssh 
+! 
+ip http client source-interface GigabitEthernet2 
+! 
+virtual-service csr_mgmt
+ ip shared host-interface GigabitEthernet2
+ activate 
+! 
+! 
+interface GigabitEthernet2
+ no shut
+ vrf forwarding Mgmt
+ ip address dhcp 
+! 
+! 
+crypto key generate rsa mod 2048 
+! 
+!
+end
