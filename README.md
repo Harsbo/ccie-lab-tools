@@ -4,7 +4,7 @@ Some tools for management of ccie lab environment. I used this for CCIE R&S v5 l
 ## Comments and usage instructions
 
 #### base-config.txt
-All CSR:s needs at least to have hostname, username, mgmt ip and ssh enabled. This can be deployed manually the first time or with DHCP reservations and IOS autoinstall. When running config contains a solid setup save it to bootflash.
+All CSR:s needs at least to have hostname, username, mgmt ip, api and ssh enabled. This can be deployed manually the first time or with DHCP reservations and IOS autoinstall. When running config contains a solid setup save it to bootflash.
 ```
 copy running bootflash:clean_config.txt
 ```

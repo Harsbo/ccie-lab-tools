@@ -46,6 +46,8 @@ virtual-service csr_mgmt
 ! 
 ! 
 crypto key generate rsa mod 2048 
-! 
+!
+file prompt quiet
+copy running bootflash:clean_config.txt
 !
 end
